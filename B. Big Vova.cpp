@@ -1,6 +1,28 @@
-///Bismillahir Rahmanir Rahim
+//Bismillahir Rahmanir Rahim
+//Allahumma Rabbi Jhidni Elma
+///A lot of mistakes is happened without understanding questions clearly.\
+Please,make sure that understand question clearly.Think from every possible output.\
+Make different algorithm to answer the question.Don't think that you have tried all possible ways.\
+There is always simple and tricky way to solve the brute force type question.
+/*--------Please carefully check--------
+    1.Overflow and underflow
+    2.Corner test case
+    3. divide zero
+
+*/
+#pragma GCC optimize("Ofast")
+#pragma GCC target("avx,avx2,fma")
+#pragma GCC optimization("unroll-loops")
+
 #include<bits/stdc++.h>
 using namespace std;
+typedef long long ll;
+typedef unsigned long long  ull;
+typedef long double ld;
+const ld PI = 2*acosl(0.0);
+const int inf=2e5+7;
+const int mxN=3000000;
+const int mod=1e9+7;
 #define speed ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 #define endl "\n"
 #define pb push_back
@@ -8,62 +30,57 @@ using namespace std;
 #define gcd(a,b) __gcd((a),(b))
 #define lcm(a,b) (a/gcd(a,b)*b)
 #define abs(a) (a<0?-(a):a)
-typedef long long ll;
-typedef unsigned long long int ull;
-typedef long double ld;
-const ld PI = acosl(-1);
-const int inf=1e9+7;
-const int mxN=2e5+5;
-#define SIZE 26
-#define FORBIDDEN -1
-#define NOT_VISITED 0
-#define VISITED 1
-bool mark[1001];
-vector<int>vec;
-
+#define debug1(x)  cout << #x << "=" << x << endl
+#define debug2(x, y)  cout << #x << "=" << x << "," << #y << "=" << y << endl
+#define digit2(x) floor((log2(x)))
+#define digit2(x) floor((log2(x)))
+#define sc(a) scanf("%d",&a)
+#define pf(a) printf("%d\n",a)
+#define DEBUG 0
+//cout<<"Case "<<cas<<": "<<
 int main()
 {
-    speed;
-    int test,n,i,j;
-    cin>>test;
-    while(test--)
+    int n,i,t,g,mx,ind,j,a;
+    cin>>t;
+    while(t--)
     {
         cin>>n;
         int ar[n];
+         mx=0;
         for(i=0;i<n;i++)
         {
             cin>>ar[i];
+           if(mx<ar[i])
+           {
+               ind=i, mx=ar[i];
+           }
         }
-        sort(ar,ar+n);
-        reverse(ar,ar+n);
-       reset(mark);
-        for(i=0;i<n-1;i++)
-        {
-            for(j=i+1;j<n;j++)
-            {
-                if(mark[j]==0 and ar[i]%ar[j]==0)
-                {
-                    vec.pb(ar[j]);
-                    mark[j]=1;
-                }
-            }
-            }
-        }
-        if(mark[n-1]==0)
-            ,mk
-            n
-            jhyg v  .,mknbh
-        {
-            vec.pb(ar[n-1]);
-        }
-        reverse(vec.begin(),vec.end());
-        vector<int>::iterator it=vec.end();
-        it--;
-        while(!vec.empty())
-        {
-            cout<<*it--<<" ";
 
-            vec.pop_back();
+        vector<int>vec;
+        vec.pb(mx);
+        g=mx;
+        mx=0;
+        ar[ind]=0;
+
+        for(i=0;i<n;i++)
+        {
+            mx=0,ind=0;
+            for(j=0;j<n;j++)
+            {
+                if(ar[j] and gcd(g,ar[j])>mx)
+                {
+                        mx=gcd(g,ar[j]);
+                        ind=j;
+                }
+
+            }
+            g=mx;
+            vec.pb(ar[ind]);
+             ar[ind]=0;
+        }
+        for(i=0;i<n;i++)
+        {
+            cout<<vec[i]<<" ";
         }
         cout<<endl;
     }

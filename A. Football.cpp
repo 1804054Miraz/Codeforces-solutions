@@ -1,56 +1,70 @@
-#include<bits/stdc++.h>
-#include<vector>
-using namespace std;
-int  main()
-{
-	int n,i,j,cn1=0,cn2=0;
-	cin>>n;
-	vector<string>v1;
-	vector<string>v2;
-	vector<string> ::iterator it;
-	string st,mx;
+//Bismillahir Rahmanir Rahim
+//Allahumma Rabbi Jhidni Elma
+///A lot of mistakes is happened without understanding questions clearly.\
+Please,make sure that understand question clearly.Think from every possible output.\
+Make different algorithm to answer the question.Don't think that you have tried all possible ways.\
+There is always simple and tricky way to solve the brute force type question.
+/*--------Please carefully check--------
+    1.Overflow and underflow
+    2.Corner test case
+    3. divide zero
 
-	for(int i=0;i<n;i++)
-	{
-		cin>>st;
-		v1.push_back(st);
-		v2.push_back(st);
-		
-	}
-	sort(v1.begin(),v1.end());
-	sort(v2.begin(),v2.end());
-	it = unique(v1.begin(),v1.end());
-	v1.resize(distance(v1.begin(),it));
-	
-	//cout<<"v1 size " << v1.size()<<endl;
-	//cout<<"v2 size " << v2.size()<<endl;
-	
-	for(i=0;i<v1.size();i++)
-	{
-		cn1=0;
-		for(j=0;j<v2.size();j++)
-		{
-			if(v1[i]==v2[j])
-			{
-				cn1++;
-				//cout<<v1[i]<<endl;
-				//cout<<v2[j]<<endl;
-			}
-			//cout<<v2[j]<<endl;
-			//cout<<"j "<<j<<endl;
-			//cout<<"CN1 "<<cn1<<endl;
-		}
-			//cout<<endl<<endl;
-			if(cn1>cn2)
-			{
-				cn2=cn1;
-				mx = v1[i];
-				//cout<<mx<<endl;
-			}
-		}
-		cout<<mx<<endl;
-	//cout<< *max_element(v.begin() , v.end())<<endl;
-	//cout<<*min_element(v.begin() , v.end())<<endl;
-	return 0;
+*/
+#pragma GCC optimize("Ofast")
+#pragma GCC target("avx,avx2,fma")
+#pragma GCC optimization("unroll-loops")
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+typedef unsigned long long  ull;
+typedef long double ld;
+const ld PI = 2*acosl(0.0);
+const int inf=2e5+7;
+const int mxN=3000000;
+const int mod=1e9+7;
+#define speed ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define endl "\n"
+#define pb push_back
+#define reset(a) memset(a,0,sizeof a)
+#define gcd(a,b) __gcd((a),(b))
+#define lcm(a,b) (a/gcd(a,b)*b)
+#define abs(a) (a<0?-(a):a)
+#define debug1(x)  cout << #x << "=" << x << endl
+#define debug2(x, y)  cout << #x << "=" << x << "," << #y << "=" << y << endl
+#define digit2(x) floor((log2(x)))
+#define digit2(x) floor((log2(x)))
+#define sc(a) scanf("%d",&a)
+#define pf(a) printf("%d\n",a)
+#define DEBUG 0
+//cout<<"Case "<<cas<<": "<<
+int main()
+{
+    int n,i;
+    cin>>n;
+    map<int,pair<string,int>>mp;
+    map<string,int>cn;
+    string st;
+
+    for(i=0;i<n;i++)
+    {
+        cin>>st;
+       mp[i]={st,cn[st]++};
+
+    }
+    int mx=0;
+     for(i=0;i<mp.size();i++)
+    {
+        //cout<<mp[i].first<<" "<<mp[i].second<<endl;
+        if(mx<mp[i].second)
+            mx=mp[i].second;
+    }
+    for(i=0;i<mp.size();i++)
+    {
+        if(mx==mp[i].second){
+             cout<<mp[i].first<<endl;
+             break;
+        }
+    }
 
 }
+

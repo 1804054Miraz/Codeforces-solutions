@@ -1,4 +1,3 @@
-
 //Bismillahir Rahmanir Rahim
 //Allahumma Rabbi Jhidni Elma
 ///A lot of mistakes is happened without understanding questions clearly.\
@@ -40,28 +39,31 @@ const int mod=1e9+7;
 //cout<<"Case "<<cas<<": "<<
 int main()
 {
-    ll a,b,t,div,diff,past,future,res;
+    ll a,b,t,diff,d,div;
     cin>>t;
     while(t--)
     {
         cin>>a>>b;
         if(a>b)
-            swap(a,b);
+        {
+            swap(a,b);//a is small
+        }
         if(a==b)
         {
             cout<<0<<" "<<0<<endl;
         }
         else
         {
-            diff = b-a;
-            div = b/diff;
-            past = b-div*diff;
-            div++;
-            future = div*diff-b;
-            res = min(future,past);
-            if(a>res)
+            diff=b-a;
+            div=b/diff;
+            while(div*diff<b)
             {
-                cout<<diff<<" "<<res<<endl;
+                div++;
+            }
+            d=div*diff-b;
+            if(a>d)
+            {
+                cout<<diff<<" "<<d<<endl;
             }
             else
             {
@@ -69,4 +71,6 @@ int main()
             }
         }
     }
+
 }
+

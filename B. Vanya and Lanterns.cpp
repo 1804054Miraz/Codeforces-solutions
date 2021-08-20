@@ -1,32 +1,54 @@
-///Bismillahir Rahmanir Rahim
+//Bismillahir Rahmanir Rahim
+//Allahumma Rabbi Jhidni Elma
+/*--------Please carefully check--------
+    1.Overflow and underflow
+    2.Corner test case
+*/
 #include<bits/stdc++.h>
 using namespace std;
-#define 	ll long long int
-#define 	pb push_back
-#define 	mx 2147483648
-#define 	mn -2147483648
-#define 	speed ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-const double pi = acos(-1.0);
-const ll inf = 1e17 + 7;
-
-int main(){
-	ll n,l;
-	cin>>n>>l;
-	ll ar[n];
-	for(int i=0;i<n;i++){
-		cin>>ar[i];
-	
-	}
-	sort(ar,ar+n);
-	for(int i=0;i<n;i++){
-		cout<<ar[i]<<" ";
-	}
-	cout<<endl;
-	for(int i=1;i<n;i++){
-		ar[i-1]=ar[i]-ar[i-1];
-		cout<<ar[i-1]<<" ";
-	}
-	
-	return 0;
+typedef long long ll;
+typedef unsigned long long  ull;
+typedef long double ld;
+const ld PI = 2*acosl(0.0);
+const int inf=2e5+7;
+const int mxN=3000000;
+#define speed ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define endl "\n"
+#define pb push_back
+#define reset(a) memset(a,0,sizeof a)
+#define gcd(a,b) __gcd((a),(b))
+#define lcm(a,b) (a/gcd(a,b)*b)
+#define abs(a) (a<0?-(a):a)
+#define debug1(x)  cout << #x << "=" << x << endl
+#define debug2(x, y)  cout << #x << "=" << x << "," << #y << "=" << y << endl
+#define digit2(x) floor((log2(x)))
+#define digit2(x) floor((log2(x)))
+#define sc(a) scanf("%d",&a)
+#define pf(a) printf("%d\n",a)
+vector<int>vec;
+int main()
+{
+    int t,n,l,dif=0,i,len,zero,a;
+    sc(n),sc(l);
+    len=zero=0;
+    for(i=0;i<n;i++)
+    {
+        sc(a);
+        vec.pb(a);
+    }
+    sort(vec.begin(),vec.end());
+    if(vec[0]!=0)
+    {
+        dif = vec[0]*2;
+    }
+    if(vec[n-1]!=l)
+    {
+        dif = max(dif,(l-vec[n-1])*2);
+    }
+    for(i=1;i<n;i++)
+    {
+        dif = max(dif,vec[i]-vec[i-1]);
+    }
+    printf("%.10lf",(double)dif/2);
 }
 

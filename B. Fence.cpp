@@ -1,27 +1,71 @@
-///Bismillahir Rahmanir Rahim
+//Bismillahir Rahmanir Rahim
+//Allahumma Rabbi Jhidni Elma
+///A lot of mistakes is happened without understanding questions clearly.\
+Please,make sure that understand question clearly.Think from every possible output.\
+Make different algorithm to answer the question.Don't think that you have tried all possible ways.\
+There is always simple and tricky way to solve the brute force type question.
+/*--------Please carefully check--------
+    1.Overflow and underflow
+    2.Corner test case
+    3. divide zero
+
+*/
+#pragma GCC optimize("Ofast")
+#pragma GCC target("avx,avx2,fma")
+#pragma GCC optimization("unroll-loops")
 #include<bits/stdc++.h>
 using namespace std;
-int mx = 2147483647;
+typedef long long ll;
+typedef unsigned long long  ull;
+typedef long double ld;
+const ld PI = 2*acosl(0.0);
+const int inf=2e5+7;
+const int mxN=3000000;
+const int mod=1e9+7;
+#define speed ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+#define endl "\n"
+#define pb push_back
+#define reset(a) memset(a,0,sizeof a)
+#define gcd(a,b) __gcd((a),(b))
+#define lcm(a,b) (a/gcd(a,b)*b)
+#define abs(a) (a<0?-(a):a)
+#define debug1(x)  cout << #x << "=" << x << endl
+#define debug2(x, y)  cout << #x << "=" << x << "," << #y << "=" << y << endl
+#define digit2(x) floor((log2(x)))
+#define digit2(x) floor((log2(x)))
+#define sc(a) scanf("%d",&a)
+#define pf(a) printf("%d\n",a)
+#define DEBUG 0
+//cout<<"Case "<<cas<<": "<<
 int main()
 {
+    int n,k,i,j,mn=0,ind;
+    cin>>n>>k;
+    ll ar[n+1],pref[n+1];
+    for(i=1;i<=n;i++)
+        cin>>ar[i];
 
-	int k,n,sum=0;
-	scanf("%d%d",&n,&k);
-	int mn=1000009,ind;
-	int ar[mn+1],pr[mn+2];
-	memset(pr,0,sizeof pr);
-	for(int i=1;i<=n;i++){
-		scanf("%d",&ar[i]);
-			pr[i] =pr[i-1]+ar[i];
-		if(i>=k){
-			sum = pr[i]-pr[i-k];
-			if(sum<mx){
-				mx = sum;
-				ind = i-k+1;
-			}
-			//cout<<sum<<" ";
-		}
-	}
-	
-	printf("%d\n",ind);
+        pref[1]=ar[1];
+    for(i=2;i<=n;i++)
+    {
+        pref[i]=pref[i-1]+ar[i];
+    }
+        mn=pref[k];
+            ind=1;
+          //  cout<<mn<<endl;
+    for(i=1;i<=n-k;i++)
+    {
+        if(i!=0){
+       if(pref[i+k]-pref[i]<mn){
+        mn = pref[i+k]-pref[i];
+        ind=i+1;
+       }
+        }
+
+    }
+  //  cout<<mn<<endl;
+    cout<<ind<<endl;
+
+    return 0;
 }
+

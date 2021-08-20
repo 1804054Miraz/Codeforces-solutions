@@ -1,6 +1,27 @@
-///Bismillahir Rahmanir Rahim
+//Bismillahir Rahmanir Rahim
+//Allahumma Rabbi Jhidni Elma
+///A lot of mistakes is happened without understanding questions clearly.\
+Please,make sure that understand question clearly.Think from every possible output.\
+Make different algorithm to answer the question.Don't think that you have tried all possible ways.\
+There is always simple and tricky way to solve the brute force type question.
+/*--------Please carefully check--------
+    1.Overflow and underflow
+    2.Corner test case
+    3. divide zero
+
+*/
+#pragma GCC optimize("Ofast")
+#pragma GCC target("avx,avx2,fma")
+#pragma GCC optimization("unroll-loops")
 #include<bits/stdc++.h>
 using namespace std;
+typedef long long ll;
+typedef unsigned long long  ull;
+typedef long double ld;
+const ld PI = 2*acosl(0.0);
+const int inf=2e5+7;
+const int mxN=3000000;
+const int mod=1e9+7;
 #define speed ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 #define endl "\n"
 #define pb push_back
@@ -8,46 +29,32 @@ using namespace std;
 #define gcd(a,b) __gcd((a),(b))
 #define lcm(a,b) (a/gcd(a,b)*b)
 #define abs(a) (a<0?-(a):a)
-typedef long long ll;
-typedef unsigned long long int ull;
-typedef long double ld;
-const ld PI = acosl(-1);
-const int inf=1e9;
-const int mxN=2e5+5;
-#define SIZE 26
-#define FORBIDDEN -1
-#define NOT_VISITED 0
-#define VISITED 1
-ll ar[100001];
+#define debug1(x)  cout << #x << "=" << x << endl
+#define debug2(x, y)  cout << #x << "=" << x << "," << #y << "=" << y << endl
+#define digit2(x) floor((log2(x)))
+#define digit2(x) floor((log2(x)))
+#define sc(a) scanf("%d",&a)
+#define pf(a) printf("%d\n",a)
+#define DEBUG 0
+//cout<<"Case "<<cas<<": "<<
+ll ar[100005];
 int main()
 {
-      speed;
-        ll test,n,i,p;
-
-            cin>>n;
-            for(i=0;i<n;i++)
-            {
-                cin>>ar[i];
-
-            }
-            sort(ar,ar+n);
-
-            double root=n-1,result,j,mn;
-            result = pow(ar[n-1],1.0/root);
-                p = result;
-                mn = n-1;
-              //  cout<<"p = "<<p<<endl;
-              p = abs(ar[n-1]- pow(p,mn))<abs(ar[n-1]-pow(p+1,mn))?p:p+1;
-            //  cout<<"p = "<<p<<endl;
-              p = abs(ar[n-1]-pow(p-1,mn))<abs(ar[n-1]-pow(p,mn))?p-1:p;
-          //  cout<<"p = "<<p<<endl;
-                ll sum = 0;
-            for(j=0,i=0;i<n;j++,i++)
-            {
-               sum += abs(ar[i]- pow(p,j));
-            }
-            cout<<sum<<endl;
-
+    ll n,i,ans=1e14,res,j,k;
+    cin>>n;
+    for(i=0;i<n;i++)
+        cin>>ar[i];
+        sort(ar,ar+n);
+   ll sum=0;
+    for(i=1;pow(i,n-1)<=1e11;i++)
+    {
+        sum=0;
+        for(j=0,k=0;j<n;j++,k++)
+        {
+          sum += abs(ar[j]-pow(i,k));
+        }
+        ans= min(ans,sum);
+    }
+    cout<<ans<<endl;
 
 }
-
